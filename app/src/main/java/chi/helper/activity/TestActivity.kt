@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.View
 import chi.helper.R
 import chi.library.base.BaseActivity
-import chi.library.extension.startActivity
+import chi.library.util.LogUtil
+import chi.library.util.dp2px
+import chi.library.util.px2dp
+import chi.library.util.showDisplayInfo
 
 class TestActivity : BaseActivity() {
 
@@ -14,10 +17,16 @@ class TestActivity : BaseActivity() {
     }
 
     fun onClick(view: View) {
-        testBasePermissionActivity()
+        testDeviceUtil()
     }
 
-    private fun testBasePermissionActivity() {
-        startActivity<PermissionActivity>()
+    private fun testDeviceUtil() {
+        showDisplayInfo()
+        val value = 100
+        val px = dp2px(value.toFloat())
+        val dp = px2dp(px.toFloat())
+        LogUtil.i("value: $value")
+        LogUtil.i("px: $px")
+        LogUtil.i("dp: $dp")
     }
 }
