@@ -1,5 +1,6 @@
 package chi.library.base
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import chi.library.util.LogUtil
@@ -12,4 +13,6 @@ open class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         LogUtil.i(javaClass.simpleName)
     }
+
+    protected fun getContext(): Context = this
 }
