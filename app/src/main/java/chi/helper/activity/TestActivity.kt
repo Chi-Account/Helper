@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.View
 import chi.helper.R
 import chi.library.base.BaseActivity
-import chi.library.util.LogUtil
-import chi.library.util.getVersionCode
-import chi.library.util.getVersionName
+import chi.library.extension.startActivity
 
 class TestActivity : BaseActivity() {
 
@@ -16,11 +14,6 @@ class TestActivity : BaseActivity() {
     }
 
     fun onClick(view: View) {
-        testPackageUtil()
-    }
-
-    private fun testPackageUtil() {
-        LogUtil.i("Version code: ${getVersionCode()}")
-        LogUtil.i("Version name: ${getVersionName()}")
+        startActivity<PageTurnerActivity>()
     }
 }
