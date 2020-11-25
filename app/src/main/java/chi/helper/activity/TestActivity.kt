@@ -4,7 +4,8 @@ import android.os.Bundle
 import android.view.View
 import chi.helper.R
 import chi.library.base.BaseActivity
-import chi.library.extension.startActivity
+import chi.library.util.network.NetworkCallback
+import chi.library.util.network.NetworkRequest
 
 class TestActivity : BaseActivity() {
 
@@ -14,6 +15,14 @@ class TestActivity : BaseActivity() {
     }
 
     fun onClick(view: View) {
-        startActivity<PageTurnerActivity>()
+        NetworkRequest.url("https://www.baidu.com/")
+            .get()
+            .callback(object : NetworkCallback {
+
+                override fun onSuccess(response: String) {
+                    throw Exception("")
+                }
+            })
+            .execute()
     }
 }

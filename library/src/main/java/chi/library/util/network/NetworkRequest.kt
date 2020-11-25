@@ -138,20 +138,24 @@ class NetworkRequest constructor(url: String) {
     }
 
     private fun onLoading(visible: Boolean) {
-        callback?.onLoading(visible)
+        try {
+            callback?.onLoading(visible)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     private fun onSuccess(response: String) {
         handler.post {
             try {
                 callback?.onSuccess(response)
-                onLoading(false)
-                setNull()
-                messageList.add("Success: $response")
-                showLog()
             } catch (e: Exception) {
                 e.printStackTrace()
             }
+            onLoading(false)
+            setNull()
+            messageList.add("Success: $response")
+            showLog()
         }
     }
 
@@ -159,13 +163,13 @@ class NetworkRequest constructor(url: String) {
         handler.post {
             try {
                 callback?.onFailure(exception)
-                onLoading(false)
-                setNull()
-                messageList.add("Failure: ${exception.message}")
-                showLog()
             } catch (e: Exception) {
                 e.printStackTrace()
             }
+            onLoading(false)
+            setNull()
+            messageList.add("Failure: ${exception.message}")
+            showLog()
         }
     }
 
