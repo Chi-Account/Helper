@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import chi.helper.bean.Item
-import chi.library.view.recyclerview.BaseAdapter
 
 class RecyclerViewAdapter(
     dataList: List<Item>
