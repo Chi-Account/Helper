@@ -11,11 +11,6 @@ abstract class SectionAdapter<E, T>(
     private val onItemLongClickListener: OnItemLongClickListener? = null
 ) : RecyclerView.Adapter<ViewHolder>() {
 
-    companion object {
-        private const val ITEM_VIEW_TYPE_SECTION_HEADER = Int.MAX_VALUE
-        private const val ITEM_VIEW_TYPE_ITEM = Int.MAX_VALUE - 1
-    }
-
     private val sectionMap = LinkedHashMap<Int, T>()
 
     init {
@@ -80,7 +75,7 @@ abstract class SectionAdapter<E, T>(
             getItemViewType(rawPosition, getItem(rawPosition))
         }
 
-    open fun getItemViewType(rawPosition: Int, item: E): Int = ITEM_VIEW_TYPE_ITEM
+    open fun getItemViewType(rawPosition: Int, item: E): Int = ITEM_VIEW_TYPE_SECTION_ITEM
 
     @LayoutRes
     private fun getLayoutResource(itemViewType: Int): Int =
