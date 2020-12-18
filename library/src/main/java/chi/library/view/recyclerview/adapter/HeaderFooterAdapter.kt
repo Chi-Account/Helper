@@ -1,4 +1,4 @@
-package chi.library.view.recyclerview
+package chi.library.view.recyclerview.adapter
 
 import android.util.SparseArray
 import android.view.View
@@ -7,6 +7,9 @@ import androidx.core.util.contains
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import chi.library.view.recyclerview.ITEM_VIEW_TYPE_FOOTER
+import chi.library.view.recyclerview.ITEM_VIEW_TYPE_HEADER
+import chi.library.view.recyclerview.ViewHolder
 
 class HeaderFooterAdapter<T>(
     private val adapter: RecyclerViewAdapter<T>

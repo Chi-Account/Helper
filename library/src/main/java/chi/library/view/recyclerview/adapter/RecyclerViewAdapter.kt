@@ -1,9 +1,12 @@
-package chi.library.view.recyclerview
+package chi.library.view.recyclerview.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
+import chi.library.view.recyclerview.ViewHolder
+import chi.library.view.recyclerview.listener.OnItemClickListener
+import chi.library.view.recyclerview.listener.OnItemLongClickListener
 
 abstract class RecyclerViewAdapter<E>(
     private val dataList: List<E>,
