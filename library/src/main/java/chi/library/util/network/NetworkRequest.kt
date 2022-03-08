@@ -147,12 +147,12 @@ class NetworkRequest constructor(url: String) {
 
     private fun onSuccess(response: String) {
         handler.post {
+            onLoading(false)
             try {
                 callback?.onSuccess(response)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-            onLoading(false)
             setNull()
             messageList.add("Success: $response")
             showLog()
@@ -161,12 +161,12 @@ class NetworkRequest constructor(url: String) {
 
     private fun onFailure(exception: Exception) {
         handler.post {
+            onLoading(false)
             try {
                 callback?.onFailure(exception)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-            onLoading(false)
             setNull()
             messageList.add("Failure: ${exception.message}")
             showLog()
