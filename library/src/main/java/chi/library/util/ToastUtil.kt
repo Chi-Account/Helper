@@ -1,24 +1,26 @@
 package chi.library.util
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 import androidx.annotation.StringRes
-import chi.library.base.BaseApplication
 
 private var toast: Toast? = null
 
 private val handler = Handler(Looper.getMainLooper())
 
-private fun showToastActually(text: CharSequence) {
+@SuppressLint("ShowToast")
+private fun Context.showToastActually(text: CharSequence) {
     toast?.cancel()
-    Toast.makeText(BaseApplication.context, text, Toast.LENGTH_SHORT).let {
+    Toast.makeText(applicationContext, text, Toast.LENGTH_SHORT).let {
         it.show()
         toast = it
     }
 }
 
-fun showToast(text: CharSequence) {
+fun Context.showToast(text: CharSequence) {
     if (isMainThread()) {
         showToastActually(text)
     } else {
@@ -26,8 +28,8 @@ fun showToast(text: CharSequence) {
     }
 }
 
-fun showToast(@StringRes resId: Int) {
-    val text = BaseApplication.context.getString(resId)
+fun Context.showToast(@StringRes resId: Int) {
+    val text = applicationContext.getString(resId)
     if (isMainThread()) {
         showToastActually(text)
     } else {
